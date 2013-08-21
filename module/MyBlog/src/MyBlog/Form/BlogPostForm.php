@@ -9,7 +9,6 @@ class BlogPostForm extends Form
 {
     public function __construct($name = null)
     {
-        // we want to ignore the name passed
         parent::__construct('blogpost');
         $this->setAttribute('method', 'post');
         $this->setInputFilter(new \MyBlog\Form\BlogPostInputFilter());
