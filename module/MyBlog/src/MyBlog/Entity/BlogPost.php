@@ -28,7 +28,7 @@ class BlogPost
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255, unique=true, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     protected $title;
 
@@ -45,14 +45,15 @@ class BlogPost
     protected $userId;
 
     /**
-     * @var datetime
-     * @ORM\Column(type="datetime")
+     * @var int
+     * @ORM\Column(type="integer")
      */
     protected $created;
 
 
     /**
      * @var int
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $state;
 
@@ -147,7 +148,7 @@ class BlogPost
     /**
      * Get created.
      *
-     * @return datetime
+     * @return int
      */
     public function getCreated()
     {
@@ -157,7 +158,7 @@ class BlogPost
     /**
      * Set created.
      *
-     * @param datetime $created
+     * @param int $created
      *
      * @return void
      */
@@ -187,4 +188,25 @@ class BlogPost
     {
         $this->state = $state;
     }
+
+    /**
+     * Helper function.
+     */
+    public function exchangeArray($data)
+    {
+        foreach ($data as $key => $val) {
+            if (property_exists($this, $key)) {
+                $this->$key = (!empty($val)) ? $val : null;
+            }
+        }
+    }
+
+    /**
+     * Helper function
+     */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
 }
