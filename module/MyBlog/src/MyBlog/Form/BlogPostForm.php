@@ -13,11 +13,19 @@ class BlogPostForm extends Form
         $this->setAttribute('method', 'post');
         $this->setInputFilter(new \MyBlog\Form\BlogPostInputFilter());
         $this->add(array(
+            'name' => 'security',
+            'type' => 'Zend\Form\Element\Csrf',
+        ));
+        $this->add(array(
             'name' => 'id',
             'type' => 'Hidden',
         ));
         $this->add(array(
             'name' => 'created',
+            'type' => 'Hidden',
+        ));
+        $this->add(array(
+            'name' => 'userId',
             'type' => 'Hidden',
         ));
         $this->add(array(

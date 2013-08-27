@@ -196,7 +196,7 @@ class BlogPost
     {
         foreach ($data as $key => $val) {
             if (property_exists($this, $key)) {
-                $this->$key = (!empty($val)) ? $val : null;
+                $this->$key = ($val !== null) ? $val : null;
             }
         }
     }

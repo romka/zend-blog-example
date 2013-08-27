@@ -1,3 +1,16 @@
-here will be the list of blog posts
 <?php
     print $this->showMessages();
+?>
+
+<ul>
+<?php
+    foreach($this->posts as $post) {
+        print '<li>
+            <a href="' . $this->url('blog', array('action'=>'view', 'id' => $post['id'])) . '">' . $post['title'] . '</a>
+            [' . date('d.m.Y H:i', $post['created']). '],
+            <a href="' . $this->url('blog', array('action'=>'edit', 'id' => $post['id'])) . '">edit</a>,
+            <a href="' . $this->url('blog', array('action'=>'delete', 'id' => $post['id'])) . '">delete</a>
+            </li>';
+    }
+?>
+</ul>

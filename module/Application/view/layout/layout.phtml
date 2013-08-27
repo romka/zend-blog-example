@@ -32,12 +32,14 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('blog') ?>"><?php echo $this->translate('Blog') ?></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
         <div class="container">
+            <?php echo $this->showMessages(); ?>
             <?php echo $this->content; ?>
             <hr>
             <footer>
