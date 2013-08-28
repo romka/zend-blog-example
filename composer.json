@@ -17,6 +17,7 @@
         "zf-commons/zfc-user": "dev-master",
         "zf-commons/zfc-user-doctrine-orm": "dev-master",
         "doctrine/doctrine-orm-module": "0.7.*",
-        "bjyoungblood/bjy-authorize": "1.4.*"
+        "bjyoungblood/bjy-authorize": "1.4.*",
+        "zf-commons/zfc-twig": "dev-master"
     }
 }

@@ -44,5 +44,10 @@ class BlogPostInputFilter extends InputFilter
                 array('name' => 'StringTrim'),
             ),
         ));
+
+        $this->add(array(
+            'name' => 'state',
+            'required' => false,
+        ));
     }
 }

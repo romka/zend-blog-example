@@ -1,0 +1,12 @@
+{% extends 'layout/layout.twig' %}
+{% import 'macros/forms.twig' as forms %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    <form method="{{ form.attributes.method }}" action="{{ url('blog', {'action': 'add'}) }}" name="blogpost" id="blogpost">
+        {% for element in form %}
+            {{ forms.input(element.attributes.name, element.value, element.attributes.type, element.label, 20, element.messages) }}
+        {% endfor %}
+    </form>
+{% endblock content %}

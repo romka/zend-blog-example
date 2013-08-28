@@ -1,0 +1,12 @@
+{% extends 'layout/layout.twig' %}
+{% import 'macros/forms.twig' as forms %}
+
+{% block content %}
+    <h1>Are you sure that you want to delete {{ post.title }}?</h1>
+
+    <form method="post" action="{{ url('blog', {'action': 'delete', 'id': post.id}) }}">
+        {{ forms.input('id', post.id, 'hidden') }}
+        {{ forms.input('del', 'Yes', 'submit') }}
+        {{ forms.input('del', 'No', 'submit') }}
+    </form>
+{% endblock content %}

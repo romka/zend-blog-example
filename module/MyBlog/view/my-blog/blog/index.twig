@@ -1,0 +1,24 @@
+{% extends 'layout/layout.twig' %}
+
+{% block content %}
+    <ul>
+    {% if isAllowed('controller\/MyBlog\\Controller\\BlogPost:edit') %}
+        {% for post in posts %}
+            <li>
+                <a href="{{ url('blog', {'action': 'view', 'id': post.id}) }}">{{ post.title|e }}</a>
+                [{{ post.created|date('d.m.Y H:i') }}]
+                <a href="{{ url('blog', {'action': 'edit', 'id': post.id}) }}">edit</a>,
+                <a href="{{ url('blog', {'action': 'delete', 'id': post.id}) }}">delete</a>
+                {% if post.state == false %} [UNPUBLISHED]{% endif %}
+            </li>
+        {% endfor %}
+    {% else %}
+        {% for post in posts %}
+            <li>
+                <a href="{{ url('blog', {'action': 'view', 'id': post.id}) }}">{{ post.title|e }}</a>
+                [{{ post.created|date('d.m.Y H:i') }}]
+            </li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+{% endblock content %}

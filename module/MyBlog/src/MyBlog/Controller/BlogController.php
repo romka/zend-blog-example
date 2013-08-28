@@ -12,9 +12,16 @@ class BlogController extends AbstractActionController
     {
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
-        $posts = $objectManager
-            ->getRepository('\MyBlog\Entity\BlogPost')
-            ->findBy(array('state' => 1), array('created' => 'DESC'));
+        if ($this->isAllowed('controller/MyBlog\Controller\BlogPost:edit')) {
+            $posts = $objectManager
+                ->getRepository('\MyBlog\Entity\BlogPost')
+                ->findBy(array(), array('created' => 'DESC'));
+        }
+        else {
+            $posts = $objectManager
+                ->getRepository('\MyBlog\Entity\BlogPost')
+                ->findBy(array('state' => 1), array('created' => 'DESC'));
+        }
 
         $posts_array = array();
         foreach ($posts as $post) {

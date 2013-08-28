@@ -12,6 +12,7 @@ return array(
         'DoctrineORMModule',
         'MyBlog',
         'MyUser',
+        'ZfcTwig',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
