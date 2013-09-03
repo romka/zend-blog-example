@@ -32,11 +32,9 @@ class BlogPostForm extends Form
             'name' => 'title',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Title',
-            ),
-            'options' => array(
                 'min' => 3,
-                'max' => 25
+                'max' => 25,
+                'label' => 'Title',
             ),
         ));
         $this->add(array(
@@ -49,6 +47,9 @@ class BlogPostForm extends Form
         $this->add(array(
             'name' => 'state',
             'type' => 'Checkbox',
+            'options' => array(
+                'label' => 'published',
+            ),
         ));
         $this->add(array(
             'name' => 'submit',

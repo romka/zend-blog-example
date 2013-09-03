@@ -101,18 +101,19 @@ class BlogController extends AbstractActionController
 
     public function editAction()
     {
+        // Check if id set.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            $this->flashMessenger()->addErrorMessage('Blogpost id doesn\'t set');
+            return $this->redirect()->toRoute('blog');
+        }
+
         // Create form.
         $form = new \MyBlog\Form\BlogPostForm();
         $form->get('submit')->setValue('Save');
 
         $request = $this->getRequest();
         if (!$request->isPost()) {
-            // Check if id and blogpost exists.
-            $id = (int) $this->params()->fromRoute('id', 0);
-            if (!$id) {
-                $this->flashMessenger()->addErrorMessage('Blogpost id doesn\'t set');
-                return $this->redirect()->toRoute('blog');
-            }
 
             $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
@@ -125,10 +126,9 @@ class BlogController extends AbstractActionController
                 return $this->redirect()->toRoute('blog');
             }
 
-
             // Fill form data.
             $form->bind($post);
-            return array('form' => $form);
+            return array('form' => $form, 'id' => $id, 'post' => $post);
         }
         else {
             $form->setData($request->getPost());
@@ -161,6 +161,7 @@ class BlogController extends AbstractActionController
             else {
                 $message = 'Error while saving blogpost';
                 $this->flashMessenger()->addErrorMessage($message);
+                return array('form' => $form, 'id' => $id);
             }
         }
     }

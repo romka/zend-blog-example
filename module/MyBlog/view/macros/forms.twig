@@ -10,7 +10,7 @@
     {% if type == 'textarea' %}
         <textarea name="{{ name }}" size="{{ size|default(20) }}" {% if messages|length > 0 %}class="error"{% endif %}/>{{ value|e }}</textarea>
     {% elseif type == 'checkbox' %}
-        <input type="{{ type|default('text') }}" name="{{ name }}" {% if value == true %}checked{% endif %} size="{{ size|default(20) }}" {% if messages|length > 0 %}class="error"{% endif %}/>
+        <input type="{{ type }}" name="{{ name }}" value="1"{% if value == true %} checked="checked"{% endif %} {% if messages|length > 0 %}class="error"{% endif %}/>
     {% else %}
         <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}" {% if messages|length > 0 %}class="error"{% endif %}/>
     {% endif %}
