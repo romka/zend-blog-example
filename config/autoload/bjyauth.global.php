@@ -44,6 +44,11 @@ return array(
                     'action'     => array('add', 'edit', 'delete'),
                     'roles'      => array('administrator'),
                 ),
+                array(
+                    'controller' => 'DoctrineORMModule\Yuml\YumlController',
+                    'action'     => array('index'),
+                    'roles'      => array(),
+                ),
             ),
         ),
     ),
