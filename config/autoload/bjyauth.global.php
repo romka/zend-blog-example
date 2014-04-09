@@ -47,7 +47,7 @@ return array(
                 array(
                     'controller' => 'DoctrineORMModule\Yuml\YumlController',
                     'action'     => array('index'),
-                    'roles'      => array(),
+                    'roles'      => array('administrator'),
                 ),
             ),
         ),
