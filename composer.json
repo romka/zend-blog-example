@@ -12,6 +12,7 @@
         "php": ">=5.4",
         "zendframework/zendframework": "2.2.*",
         "zendframework/zend-developer-tools": "dev-master",
+        "bjyoungblood/BjyProfiler": "dev-master",
         "doctrine/common": ">=2.1",
         "doctrine/doctrine-orm-module": "0.7.*",
         "doctrine/migrations": "1.0.*@dev",
