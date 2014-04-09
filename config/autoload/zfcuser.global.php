@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ZfcUser Configuration
  *
@@ -42,7 +43,7 @@ $settings = array(
      */
     //'enable_username' => false,
 
-    /**     
+    /**
      * Authentication Adapters
      *
      * Specify the adapters that will be used to try and authenticate the user
@@ -50,8 +51,7 @@ $settings = array(
      * Default value: array containing 'ZfcUser\Authentication\Adapter\Db' with priority 100
      * Accepted values: array containing services that implement 'ZfcUser\Authentication\Adapter\ChainableAdapter'
      */
-    'auth_adapters' => array( 100 => 'ZfcUser\Authentication\Adapter\Db' ),
-
+    'auth_adapters' => array(100 => 'ZfcUser\Authentication\Adapter\Db'),
     /**
      * Enable Display Name
      *
@@ -118,14 +118,14 @@ $settings = array(
      * this to configure which Zend\Captcha adapter to use, and the options to
      * pass to it. The default uses the Figlet captcha.
      */
-    /*'form_captcha_options' => array(
-        'class'   => 'figlet',
-        'options' => array(
-            'wordLen'    => 5,
-            'expiration' => 300,
-            'timeout'    => 300,
-        ),
-    ),*/
+    /* 'form_captcha_options' => array(
+      'class'   => 'figlet',
+      'options' => array(
+      'wordLen'    => 5,
+      'expiration' => 300,
+      'timeout'    => 300,
+      ),
+      ), */
 
     /**
      * Use Redirect Parameter If Present
@@ -137,11 +137,11 @@ $settings = array(
     //'use_redirect_parameter_if_present' => true,
 
     /**
-	 * Sets the view template for the user login widget
-	 *
-	 * Default value: 'zfc-user/user/login.phtml'
+     * Sets the view template for the user login widget
+     *
+     * Default value: 'zfc-user/user/login.phtml'
      * Accepted values: string path to a view script
-	 */
+     */
     //'user_login_widget_view_template' => 'zfc-user/user/login.phtml',
 
     /**
@@ -177,7 +177,6 @@ $settings = array(
      * invalidating existing user accounts. Existing user passwords will be
      * re-hashed automatically on their next successful login.
      */
-
     /**
      * Password Cost
      *
@@ -190,46 +189,45 @@ $settings = array(
 
     /**
      * Enable user state usage
-     * 
+     *
      * Should user's state be used in the registration/login process?
      */
     //'enable_user_state' => true,
-    
+
     /**
      * Default user state upon registration
-     * 
+     *
      * What state user should have upon registration?
      * Allowed value type: integer
      */
     //'default_user_state' => 1,
-    
+
     /**
      * States which are allowing user to login
-     * 
+     *
      * When user tries to login, is his/her state one of the following?
      * Include null if you want user's with no state to login as well.
      * Allowed value types: null and integer
      */
     //'allowed_login_states' => array( null, 1 ),
-    
+
     /**
      * User table name
      */
     'table_name' => 'users',
-    
-    /**
-     * End of ZfcUser configuration
-     */
+        /**
+         * End of ZfcUser configuration
+         */
 );
 
 /**
  * You do not need to edit below this line
  */
 return array(
-    'zfcuser' => $settings,
+    'zfcuser'         => $settings,
     'service_manager' => array(
         'aliases' => array(
-            'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Zend\Db\Adapter\Adapter',
+            'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter'] : 'Zend\Db\Adapter\Adapter',
         ),
     ),
 );

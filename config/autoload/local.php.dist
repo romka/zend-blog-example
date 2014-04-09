@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Local Configuration Override
  *
@@ -10,6 +11,12 @@
  * in ZendSkeletonApplication. This is a good practice, as it prevents sensitive
  * credentials from accidentally being committed into version control.
  */
+$dbParams = array(
+    'database' => "zend2_blog",
+    'username' => 'root',
+    'password' => 'root',
+    'hostname' => 'localhost'
+);
 
 return array(
     // Whether or not to enable a configuration cache.
@@ -21,4 +28,27 @@ return array(
     // The path in which to cache merged configuration.
     //'cache_dir' =>  './data/cache',
     // ...
+    "db"              => array(
+        "username" => "root",
+        "password" => "root",
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
+        $adapter = new BjyProfiler\Db\Adapter\ProfilingAdapter(array(
+            'driver'   => 'pdo',
+            'dsn'      => 'mysql:dbname=' . $dbParams['database'] . ';host=' . $dbParams['hostname'],
+            'database' => $dbParams['database'],
+            'username' => $dbParams['username'],
+            'password' => $dbParams['password'],
+            'hostname' => $dbParams['hostname'],
+        ));
+
+        $adapter->setProfiler(new BjyProfiler\Db\Profiler\Profiler);
+        $adapter->injectProfilingStatementPrototype();
+        return $adapter;
+    },
+        ),
+    ),
 );
+
