@@ -14,7 +14,7 @@
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/common": ">=2.1",
         "doctrine/doctrine-orm-module": "0.7.*",
-        "murganikolay/doctrine-migrations-module": "dev-master",
+        "doctrine/migrations": "1.0.*@dev",
         "zf-commons/zfc-base": "v0.1.2",
         "zf-commons/zfc-user": "dev-master",
         "zf-commons/zfc-user-doctrine-orm": "dev-master",

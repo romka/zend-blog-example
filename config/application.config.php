@@ -11,7 +11,7 @@ return array(
         'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
-        'DoctrineMigrationsModule',
+//        'DoctrineMigrationsModule',
         'MyBlog',
         'MyUser',
         'ZfcTwig',
