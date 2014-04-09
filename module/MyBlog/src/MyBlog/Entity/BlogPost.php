@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://github.com/romka/zend-blog-example
  */
@@ -18,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class BlogPost
 {
+
     /**
      * @var int
      * @ORM\Id
@@ -50,7 +52,6 @@ class BlogPost
      */
     protected $created;
 
-
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
@@ -76,7 +77,7 @@ class BlogPost
      */
     public function setId($id)
     {
-        $this->id = (int)$id;
+        $this->id = (int) $id;
     }
 
     /**

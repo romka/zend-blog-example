@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -14,6 +15,7 @@ use Zend\Mvc\MvcEvent;
 
 class Module
 {
+
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
@@ -36,4 +38,5 @@ class Module
             ),
         );
     }
+
 }

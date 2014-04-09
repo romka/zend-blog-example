@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BjyAuthorize Module (https://github.com/bjyoungblood/BjyAuthorize)
  *
@@ -23,6 +24,13 @@ use ZfcUser\Entity\UserInterface;
  */
 class User implements UserInterface, ProviderInterface
 {
+    /**
+     * migrations test
+     * @ORM\Column(type="string", length=255, unique=true, nullable=true)
+     * @var string $test
+     */
+//    protected $test;
+
     /**
      * @var int
      * @ORM\Id
@@ -231,4 +239,5 @@ class User implements UserInterface, ProviderInterface
     {
         $this->roles[] = $role;
     }
+
 }

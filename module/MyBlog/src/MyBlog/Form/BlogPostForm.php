@@ -1,4 +1,5 @@
 <?php
+
 namespace MyBlog\Form;
 
 use Zend\Form\Form;
@@ -7,6 +8,7 @@ use Zend\InputFilter\InputFilter;
 
 class BlogPostForm extends Form
 {
+
     public function __construct($name = null)
     {
         parent::__construct('blogpost');
@@ -29,35 +31,36 @@ class BlogPostForm extends Form
             'type' => 'Hidden',
         ));
         $this->add(array(
-            'name' => 'title',
-            'type' => 'Text',
+            'name'    => 'title',
+            'type'    => 'Text',
             'options' => array(
-                'min' => 3,
-                'max' => 25,
+                'min'   => 3,
+                'max'   => 25,
                 'label' => 'Title',
             ),
         ));
         $this->add(array(
-            'name' => 'text',
-            'type' => 'Textarea',
+            'name'    => 'text',
+            'type'    => 'Textarea',
             'options' => array(
                 'label' => 'Text',
             ),
         ));
         $this->add(array(
-            'name' => 'state',
-            'type' => 'Checkbox',
+            'name'    => 'state',
+            'type'    => 'Checkbox',
             'options' => array(
                 'label' => 'published',
             ),
         ));
         $this->add(array(
-            'name' => 'submit',
-            'type' => 'Submit',
+            'name'       => 'submit',
+            'type'       => 'Submit',
             'attributes' => array(
                 'value' => 'Save',
-                'id' => 'submitbutton',
+                'id'    => 'submitbutton',
             ),
         ));
     }
+
 }

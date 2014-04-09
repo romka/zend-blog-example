@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BjyAuthorize Module (https://github.com/bjyoungblood/BjyAuthorize)
  *
@@ -21,6 +22,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Role implements HierarchicalRoleInterface
 {
+
     /**
      * @var int
      * @ORM\Id
@@ -60,7 +62,7 @@ class Role implements HierarchicalRoleInterface
      */
     public function setId($id)
     {
-        $this->id = (int)$id;
+        $this->id = (int) $id;
     }
 
     /**
@@ -106,4 +108,5 @@ class Role implements HierarchicalRoleInterface
     {
         $this->parent = $parent;
     }
+
 }

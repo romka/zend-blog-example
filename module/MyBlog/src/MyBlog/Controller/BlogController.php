@@ -1,4 +1,5 @@
 <?php
+
 namespace MyBlog\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -14,13 +15,12 @@ class BlogController extends AbstractActionController
 
         if ($this->isAllowed('controller/MyBlog\Controller\BlogPost:edit')) {
             $posts = $objectManager
-                ->getRepository('\MyBlog\Entity\BlogPost')
-                ->findBy(array(), array('created' => 'DESC'));
-        }
-        else {
+                    ->getRepository('\MyBlog\Entity\BlogPost')
+                    ->findBy(array(), array('created' => 'DESC'));
+        } else {
             $posts = $objectManager
-                ->getRepository('\MyBlog\Entity\BlogPost')
-                ->findBy(array('state' => 1), array('created' => 'DESC'));
+                    ->getRepository('\MyBlog\Entity\BlogPost')
+                    ->findBy(array('state' => 1), array('created' => 'DESC'));
         }
 
         $posts_array = array();
@@ -47,8 +47,8 @@ class BlogController extends AbstractActionController
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
         $post = $objectManager
-            ->getRepository('\MyBlog\Entity\BlogPost')
-            ->findOneBy(array('id' => $id));
+                ->getRepository('\MyBlog\Entity\BlogPost')
+                ->findOneBy(array('id' => $id));
 
         if (!$post) {
             $this->flashMessenger()->addErrorMessage(sprintf('Blogpost with id %s doesn\'t exists', $id));
@@ -90,8 +90,7 @@ class BlogController extends AbstractActionController
 
                 // Redirect to list of blogposts
                 return $this->redirect()->toRoute('blog');
-            }
-            else {
+            } else {
                 $message = 'Error while saving blogpost';
                 $this->flashMessenger()->addErrorMessage($message);
             }
@@ -118,8 +117,8 @@ class BlogController extends AbstractActionController
             $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
             $post = $objectManager
-                ->getRepository('\MyBlog\Entity\BlogPost')
-                ->findOneBy(array('id' => $id));
+                    ->getRepository('\MyBlog\Entity\BlogPost')
+                    ->findOneBy(array('id' => $id));
 
             if (!$post) {
                 $this->flashMessenger()->addErrorMessage(sprintf('Blogpost with id %s doesn\'t exists', $id));
@@ -129,21 +128,19 @@ class BlogController extends AbstractActionController
             // Fill form data.
             $form->bind($post);
             return array('form' => $form, 'id' => $id, 'post' => $post);
-        }
-        else {
+        } else {
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
                 $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
                 $data = $form->getData();
-                $id = $data['id'];
+                $id   = $data['id'];
                 try {
                     $blogpost = $objectManager->find('\MyBlog\Entity\BlogPost', $id);
-                }
-                catch (\Exception $ex) {
+                } catch (\Exception $ex) {
                     return $this->redirect()->toRoute('blog', array(
-                        'action' => 'index'
+                                'action' => 'index'
                     ));
                 }
 
@@ -157,8 +154,7 @@ class BlogController extends AbstractActionController
 
                 // Redirect to list of blogposts
                 return $this->redirect()->toRoute('blog');
-            }
-            else {
+            } else {
                 $message = 'Error while saving blogpost';
                 $this->flashMessenger()->addErrorMessage($message);
                 return array('form' => $form, 'id' => $id);
@@ -186,11 +182,10 @@ class BlogController extends AbstractActionController
                     $blogpost = $objectManager->find('MyBlog\Entity\BlogPost', $id);
                     $objectManager->remove($blogpost);
                     $objectManager->flush();
-                }
-                catch (\Exception $ex) {
+                } catch (\Exception $ex) {
                     $this->flashMessenger()->addErrorMessage('Error while deleting data');
                     return $this->redirect()->toRoute('blog', array(
-                        'action' => 'index'
+                                'action' => 'index'
                     ));
                 }
 
@@ -201,8 +196,9 @@ class BlogController extends AbstractActionController
         }
 
         return array(
-            'id'    => $id,
+            'id'   => $id,
             'post' => $objectManager->find('MyBlog\Entity\BlogPost', $id)->getArrayCopy(),
         );
     }
+
 }

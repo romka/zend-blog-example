@@ -8,3 +8,6 @@ nbproject
 .settings
 composer.lock
 vendor/bin
+vendor/
+data/cache/
+data/DoctrineORMModule/

@@ -1,8 +1,10 @@
 <?php
+
 namespace MyUser;
 
 class Module
 {
+
     public function getAutoloaderConfig()
     {
         return array(
@@ -18,4 +20,5 @@ class Module
     {
         return include __DIR__ . '/config/module.config.php';
     }
+
 }
