@@ -7,47 +7,48 @@ use Zend\InputFilter\InputFilter;
 
 class BlogPostInputFilter extends InputFilter
 {
+
     public function __construct()
     {
         $this->add(array(
-            'name' => 'title',
-            'required' => true,
+            'name'       => 'title',
+            'required'   => true,
             'validators' => array(
                 array(
-                    'name' => 'StringLength',
+                    'name'    => 'StringLength',
                     'options' => array(
                         'min' => 3,
                         'max' => 100,
                     ),
                 ),
             ),
-            'filters' => array(
+            'filters'    => array(
                 array('name' => 'StripTags'),
                 array('name' => 'StringTrim'),
             ),
-
         ));
 
         $this->add(array(
-            'name' => 'text',
-            'required' => true,
+            'name'       => 'text',
+            'required'   => true,
             'validators' => array(
                 array(
-                    'name' => 'StringLength',
+                    'name'    => 'StringLength',
                     'options' => array(
                         'min' => 50,
                     ),
                 ),
             ),
-            'filters' => array(
+            'filters'    => array(
                 array('name' => 'StripTags'),
                 array('name' => 'StringTrim'),
             ),
         ));
 
         $this->add(array(
-            'name' => 'state',
+            'name'     => 'state',
             'required' => false,
         ));
     }
+
 }
